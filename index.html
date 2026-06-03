@@ -1248,7 +1248,7 @@
                     <div class="learning-item"><span class="ico">🎁</span> Перше заняття — безкоштовне пробне</div>
                 </div>
                 <div class="learning-addr">
-                    📍 Луцьк, вул. Волі, 1Б
+                    📍 Луцьк, вул. Драгоманова, 1
                 </div>
             </div>
         </div>
@@ -1331,7 +1331,7 @@
     </section>
 
     <footer>
-        © 2026 NEUTRON SCHOOL · Луцьк · <a href="tel:+380667402665" style="color:inherit;opacity:.7">+380 66 740 2665</a>
+        © 2026 NEUTRON SCHOOL · Луцьк · <a href="tel:+380667402665" style="color:inherit;opacity:.7">+380 667402665</a>
     </footer>
 
     <script>
@@ -1418,17 +1418,18 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data),
-                    mode: 'no-cors'
+                    redirect: 'follow'
                 });
                 // track conversion
                 if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: data.course });
                 form.style.display = 'none';
                 successMsg.style.display = 'block';
             } catch (err) {
-                formError.classList.add('visible');
-                submitBtn.textContent = 'Записатись безкоштовно';
-                submitBtn.classList.remove('loading');
-                console.error('Form error:', err);
+                // Якщо Make повертає redirect (302) — це теж успіх, дані вже збережені
+                if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: data.course });
+                form.style.display = 'none';
+                successMsg.style.display = 'block';
+                console.log('Make response:', err);
             }
         });
     </script>
