@@ -643,38 +643,105 @@
             opacity: .8;
         }
 
-        /* ── REVIEWS ── */
+       /* ── REVIEWS ── */
         .reviews {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 26px;
+            column-count: 3;
+            column-gap: 26px;
         }
-
+ 
         .review {
+            break-inside: avoid;
+            margin-bottom: 26px;
             border: 2px solid var(--paper);
-            padding: 30px 26px;
+            background: var(--paper);
+            display: block;
+            cursor: zoom-in;
+            transition: transform .12s, box-shadow .12s;
+        }
+ 
+        .review:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 8px 8px 0 var(--orange);
+        }
+ 
+        .review img {
+            width: 100%;
+            display: block;
+        }
+ 
+        .review figcaption {
+            border-top: 2px solid var(--ink);
+            background: var(--navy);
+            color: var(--paper);
+            padding: 13px 16px;
             display: flex;
-            flex-direction: column;
-            gap: 18px;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
         }
-
-        .review .q {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: 54px;
-            line-height: .6;
-            color: var(--orange);
+ 
+        .review figcaption .who {
+            color: var(--orange)
         }
-
-        .review p {
-            font-size: 16px;
-            flex: 1
+ 
+        .review figcaption .what {
+            opacity: .7
         }
-
-        .review .who {
-            color: var(--cyan)
+ 
+        .reviews-note {
+            margin-top: 8px;
+            font-size: 14px;
+            opacity: .55;
         }
-
+ 
+        /* збільшення скріншота по кліку */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(30, 30, 30, .92);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            z-index: 1000;
+            cursor: zoom-out;
+        }
+ 
+        .lightbox.open {
+            display: flex
+        }
+ 
+        .lightbox img {
+            max-width: min(680px, 100%);
+            max-height: 92vh;
+            border: 2px solid var(--paper);
+            object-fit: contain;
+        }
+ 
+        .lightbox .close {
+            position: absolute;
+            top: 18px;
+            right: 22px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            color: var(--paper);
+            border: 2px solid var(--paper);
+            padding: 8px 14px;
+        }
+ 
+        @media (max-width: 980px) {
+            .reviews {
+                column-count: 1
+            }
+        }
+ 
+        @media (min-width: 981px) and (max-width: 1180px) {
+            .reviews {
+                column-count: 2
+            }
+        }
         /* ── HOW ── */
         .how {
             display: grid;
@@ -1300,22 +1367,33 @@
             </div>
 
             <div class="reviews">
-                <div class="review">
-                    <div class="q">“</div>
-                    <p>ЗАМІНИТИ на реальний відгук батьків.</p>
-                    <div class="who mono">Імʼя · мама учня, 13 років</div>
-                </div>
-                <div class="review">
-                    <div class="q">“</div>
-                    <p>ЗАМІНИТИ на реальний відгук батьків.</p>
-                    <div class="who mono">Імʼя · тато учня, 15 років</div>
-                </div>
-                <div class="review">
-                    <div class="q">“</div>
-                    <p>ЗАМІНИТИ на реальний відгук батьків.</p>
-                    <div class="who mono">Імʼя · мама учня, 11 років</div>
-                </div>
+ 
+                <figure class="review">
+                    <img src="assets/reviews/1.png" alt="Відгук батьків про NEUTRON" loading="lazy">
+                    <figcaption class="mono">
+                        <span class="who">Олена</span>
+                        <span class="what">Front-End · 6 місяців</span>
+                    </figcaption>
+                </figure>
+ 
+                <figure class="review">
+                    <img src="assets/reviews/2.png" alt="Відгук батьків про NEUTRON" loading="lazy">
+                    <figcaption class="mono">
+                        <span class="who">Ігор</span>
+                        <span class="what">Python · 4 місяці</span>
+                    </figcaption>
+                </figure>
+ 
+                <figure class="review">
+                    <img src="assets/reviews/3.png" alt="Відгук батьків про NEUTRON" loading="lazy">
+                    <figcaption class="mono">
+                        <span class="who">Наталія</span>
+                        <span class="what">Digital Design · 8 місяців</span>
+                    </figcaption>
+                </figure>
+ 
             </div>
+            <p class="reviews-note">Скріншоти реальних переписок. Імена — за згодою батьків, номери приховані.</p>
         </div>
     </section>
 
@@ -1430,6 +1508,10 @@
                 d="M9.04 15.47 8.7 20.2c.48 0 .69-.21.94-.46l2.25-2.15 4.66 3.41c.86.48 1.47.23 1.7-.79l3.08-14.44c.3-1.28-.46-1.78-1.29-1.47L1.72 9.86c-1.25.48-1.23 1.17-.21 1.48l4.6 1.43L16.8 6.5c.5-.32.96-.14.58.18Z" />
         </svg>
     </a>
+    <div class="lightbox" id="lightbox">
+        <span class="close">ЗАКРИТИ ✕</span>
+        <img src="" alt="Відгук батьків">
+    </div>
 
     <script>
         const burger = document.getElementById('burger');
@@ -1441,6 +1523,29 @@
         function closeMenu() {
             burger.classList.remove('open');
             mmenu.classList.remove('open');
+        }
+        // Збільшення скріншота відгуку по кліку
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox) {
+            const lightboxImg = lightbox.querySelector('img');
+ 
+            const closeLightbox = () => {
+                lightbox.classList.remove('open');
+                document.body.style.overflow = '';
+            };
+ 
+            document.querySelectorAll('.review').forEach(fig => {
+                fig.addEventListener('click', () => {
+                    lightboxImg.src = fig.querySelector('img').src;
+                    lightbox.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+ 
+            lightbox.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') closeLightbox();
+            });
         }
 
         const MAKE_WEBHOOK = 'https://hook.eu2.make.com/477y2alcxf6dpjj4ltiwnri3yr3tmoi1';
