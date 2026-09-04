@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEUTRON SCHOOL | IT курси для дітей у Луцьку</title>
     <meta name="description"
-        content="IT школа для дітей 10–17 років у Луцьку. Front-End, Python, Digital Design. Безкоштовне пробне заняття.">
+        content="IT школа для дітей 8–17 років у Луцьку. Front-End, Python, Digital Design. Безкоштовне пробне заняття.">
 
     <!-- ВЕРИФІКАЦІЯ ДОМЕНУ В META. Замінити ВСТАВИТИ_КОД на код з Business Manager -->
     <meta name="facebook-domain-verification" content="ВСТАВИТИ_КОД">
@@ -16,9 +16,9 @@
     <link rel="canonical" href="https://neutronschool.com.ua/">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://neutronschool.com.ua/">
-    <meta property="og:title" content="NEUTRON SCHOOL — IT курси для дітей 10–17 років у Луцьку">
+    <meta property="og:title" content="NEUTRON SCHOOL — IT курси для дітей 8–17 років у Луцьку">
     <meta property="og:description"
-        content="Front-End, Python, Digital Design. Групи до 10 дітей. Перше заняття безкоштовно.">
+        content="Front-End, Python, Digital Design. Групи до 8 дітей. Перше заняття безкоштовно.">
     <meta property="og:image" content="https://neutronschool.com.ua/assets/logo-lockup.png">
     <meta property="og:locale" content="uk_UA">
     <meta name="theme-color" content="#2A3F5F">
@@ -1275,7 +1275,7 @@
                     <h3>Група</h3>
                     <div class="who mono">Для тих, кому цікавіше разом</div>
                     <ul>
-                        <li>До 10 дітей — викладач встигає до кожного</li>
+                        <li>До 8 дітей — викладач встигає до кожного</li>
                         <li>Спільні проєкти і командна робота</li>
                         <li>Офлайн, вул. Волі 1Б</li>
                         <li>Фіксований день і час</li>
@@ -1408,7 +1408,7 @@
             </div>
 
             <div class="how">
-                <div><b>01</b><span>Групові офлайн-заняття до 10 дітей</span></div>
+                <div><b>01</b><span>Групові офлайн-заняття до 8 дітей</span></div>
                 <div><b>02</b><span>Індивідуальні уроки офлайн або онлайн</span></div>
                 <div><b>03</b><span>Один раз на тиждень по 1,5 години</span></div>
                 <div><b>04</b><span>Перше заняття — безкоштовне пробне</span></div>
@@ -1457,6 +1457,8 @@
                         <label for="f-age">Вік дитини *</label>
                         <select id="f-age">
                             <option value="">Оберіть вік</option>
+                            <option value="8">8 років</option>
+                            <option value="9">9 років</option>
                             <option value="10">10 років</option>
                             <option value="11">11 років</option>
                             <option value="12">12 років</option>
@@ -1620,15 +1622,14 @@
             submitBtn.classList.add('loading');
 
             try {
+                // Тіло йде як form-urlencoded і БЕЗ заголовка Content-Type.
+                // Заголовок application/json робив запит "складним": браузер спершу
+                // слав службовий OPTIONS, і Make отримував порожній запит.
                 await fetch(MAKE_WEBHOOK, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data),
-                    redirect: 'follow'
+                    body: new URLSearchParams(data)
                 });
             } catch (err) {
-                // Make часто відповідає редіректом — браузер рахує це помилкою,
-                // хоча дані вже прийняті. Тому користувача не блокуємо.
                 console.log('Make response:', err);
             }
 
