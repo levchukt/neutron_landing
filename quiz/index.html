@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Яка IT-професія підходить вашій дитині? | NEUTRON SCHOOL</title>
+    <meta name="description" content="8 питань про характер і звички дитини. У кінці — конкретний напрямок і пояснення, чому саме він. Займе 2 хвилини.">
+    <meta name="robots" content="noindex">
+
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/favicon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neutronschool.com.ua/quiz/">
+    <meta property="og:title" content="Яка IT-професія підходить вашій дитині?">
+    <meta property="og:description" content="8 питань — і конкретний напрямок з поясненням. Займе 2 хвилини.">
+    <meta property="og:image" content="https://neutronschool.com.ua/assets/logo-lockup.png">
+    <meta property="og:locale" content="uk_UA">
+    <meta name="theme-color" content="#2A3F5F">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- META PIXEL -->
+    <script>
+        !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s) }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '948291634831475');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=948291634831475&ev=PageView&noscript=1" /></noscript>
+
+    <style>
+        :root {
+            --navy: #2A3F5F;
+            --navy-deep: #223350;
+            --cyan: #2FB8CD;
+            --paper: #F4F7F5;
+            --ink: #1E1E1E;
+            --orange: #FF6B35;
+            --grey: #8C97A6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--navy);
+            color: var(--paper);
+            line-height: 1.55;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px }
+
+        /* ── HEADER ── */
+        header {
+            border-bottom: 2px solid var(--paper);
+            background: var(--navy);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .head-in {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .head-in img { height: 24px; display: block }
+
+        .head-in .step {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            opacity: .6;
+        }
+
+        /* ── PROGRESS ── */
+        .bar { height: 4px; background: rgba(244, 247, 245, .18) }
+
+        .bar > i {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: var(--orange);
+            transition: width .3s ease;
+        }
+
+        /* ── TYPO ── */
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(30px, 6.4vw, 50px);
+            line-height: 1.05;
+            letter-spacing: -.03em;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(24px, 5vw, 36px);
+            line-height: 1.12;
+            letter-spacing: -.02em;
+        }
+
+        h3 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: -.01em;
+            margin-bottom: 10px;
+        }
+
+        .lead { font-size: 17px; opacity: .82 }
+
+        .tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 14px;
+        }
+
+        /* ── SCREENS ── */
+        .screen { display: none; padding: 44px 0 70px }
+        .screen.on { display: block; animation: in .28s ease }
+
+        @keyframes in {
+            from { opacity: 0; transform: translateY(10px) }
+            to { opacity: 1; transform: none }
+        }
+
+        /* ── BUTTONS ── */
+        .btn {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 16px 30px;
+            background: var(--orange);
+            color: var(--ink);
+            border: 2px solid var(--ink);
+            cursor: pointer;
+            transition: transform .12s, box-shadow .12s;
+            box-shadow: 5px 5px 0 var(--paper);
+        }
+
+        .btn:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--paper) }
+        .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--paper) }
+        .btn.wide { width: 100%; padding: 18px; font-size: 14px }
+        .btn.loading { opacity: .6; pointer-events: none }
+
+        /* ── OPTIONS ── */
+        .opts { margin-top: 26px; display: grid; gap: 12px }
+
+        .opt {
+            display: block;
+            width: 100%;
+            text-align: left;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.4;
+            color: var(--paper);
+            background: var(--navy-deep);
+            border: 2px solid rgba(244, 247, 245, .3);
+            padding: 16px 18px;
+            cursor: pointer;
+            transition: transform .12s, box-shadow .12s, border-color .12s, background .12s;
+        }
+
+        .opt:hover {
+            border-color: var(--paper);
+            background: #26395a;
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 var(--cyan);
+        }
+
+        .opt:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--cyan) }
+
+        .back {
+            margin-top: 22px;
+            background: none;
+            border: 0;
+            color: var(--paper);
+            opacity: .5;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .back:hover { opacity: .9 }
+
+        /* ── FIELDS ── */
+        .fg { margin-bottom: 18px }
+
+        .fg label {
+            display: block;
+            margin-bottom: 7px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            opacity: .7;
+        }
+
+        .fg input,
+        .fg select {
+            width: 100%;
+            padding: 14px 15px;
+            background: transparent;
+            border: 2px solid rgba(244, 247, 245, .35);
+            color: var(--paper);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            outline: none;
+            transition: border-color .15s;
+        }
+
+        .fg input::placeholder { color: rgba(244, 247, 245, .4) }
+        .fg input:focus, .fg select:focus { border-color: var(--orange) }
+        .fg input.bad, .fg select.bad { border-color: #FF5C5C }
+        .fg select option { background: var(--navy); color: var(--paper) }
+
+        .err { display: none; margin-top: 6px; font-size: 13px; color: #FF9B9B }
+        .err.show { display: block }
+
+        .row2 { display: grid; grid-template-columns: 1fr 130px; gap: 14px }
+
+        /* ── RESULT ── */
+        .card {
+            border: 2px solid var(--ink);
+            background: var(--navy-deep);
+            padding: 30px 26px;
+            box-shadow: 8px 8px 0 var(--cyan);
+            margin-bottom: 26px;
+        }
+
+        .card.paper {
+            background: var(--paper);
+            color: var(--ink);
+            box-shadow: 8px 8px 0 var(--orange);
+        }
+
+        .verdict {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(26px, 5.6vw, 40px);
+            line-height: 1.08;
+            letter-spacing: -.02em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .why { list-style: none; display: grid; gap: 12px; margin-top: 4px }
+
+        .why li {
+            padding-left: 20px;
+            position: relative;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .why li:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 10px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .second {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(30, 30, 30, .18);
+            font-size: 15px;
+            opacity: .8;
+        }
+
+        .disc {
+            border: 2px dashed rgba(244, 247, 245, .3);
+            padding: 22px 20px;
+            font-size: 15px;
+            line-height: 1.55;
+            opacity: .9;
+            margin-bottom: 26px;
+        }
+
+        .sign {
+            margin-top: 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--cyan);
+        }
+
+        .sign span { display: block; text-transform: none; letter-spacing: 0; opacity: .65; color: var(--paper); font-size: 12px; margin-top: 5px }
+
+        .card b { color: var(--cyan); font-weight: 700 }
+        .card.paper b { color: var(--ink) }
+        .disc b { color: var(--cyan) }
+        .p + .p { margin-top: 13px }
+
+        .privacy { margin-top: 14px; font-size: 12px; opacity: .55; text-align: center; line-height: 1.5 }
+
+        .scores { margin-top: 18px; display: flex; gap: 16px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .08em; opacity: .55 }
+
+        footer { border-top: 2px solid rgba(244, 247, 245, .2); padding: 24px 0 40px; text-align: center; font-size: 12px; opacity: .5 }
+
+        @media (max-width:560px) {
+            .card { padding: 24px 18px; box-shadow: 6px 6px 0 var(--cyan) }
+            .card.paper { box-shadow: 6px 6px 0 var(--orange) }
+            .row2 { grid-template-columns: 1fr 110px }
+            .screen { padding: 32px 0 56px }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="head-in">
+            <a href="../"><img src="../assets/logo-wordmark.png" alt="NEUTRON SCHOOL"></a>
+            <div class="step mono" id="stepLabel"></div>
+        </div>
+    </header>
+    <div class="bar"><i id="bar"></i></div>
+
+    <div class="wrap">
+
+        <!-- 0 · COVER -->
+        <section class="screen on" id="s-cover">
+            <div class="tag">Тест · 2 хвилини</div>
+            <h1>Яка IT-професія<br>підходить вашій дитині?</h1>
+            <p class="lead" style="margin-top:20px;max-width:540px">
+                Вісім питань про характер і звички дитини. У кінці — конкретний напрямок
+                і пояснення, чому саме він.
+            </p>
+            <div style="margin-top:30px"><button class="btn" id="startBtn">Почати</button></div>
+        </section>
+
+        <!-- 1 · NAME + AGE -->
+        <section class="screen" id="s-intro">
+            <div class="tag">Крок 1</div>
+            <h2>Почнемо з простого</h2>
+            <p class="lead" style="margin-top:12px">Як звати дитину і скільки їй років?</p>
+
+            <div style="margin-top:26px;max-width:460px">
+                <div class="row2">
+                    <div class="fg">
+                        <label for="q-name">Імʼя дитини</label>
+                        <input type="text" id="q-name" placeholder="Наприклад: Артем" autocomplete="off">
+                    </div>
+                    <div class="fg">
+                        <label for="q-age">Вік</label>
+                        <select id="q-age">
+                            <option value="">—</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="err" id="err-intro">Заповніть імʼя та вік</div>
+                <button class="btn wide" id="introBtn" style="margin-top:8px">Далі</button>
+            </div>
+        </section>
+
+        <!-- 2 · QUESTION -->
+        <section class="screen" id="s-q">
+            <div class="tag" id="qTag"></div>
+            <h2 id="qTitle"></h2>
+            <div class="opts" id="qOpts"></div>
+            <button class="back" id="backBtn">← Назад</button>
+        </section>
+
+        <!-- 3 · JUNIOR 8–9 -->
+        <section class="screen" id="s-junior">
+            <div class="card">
+                <h2>Для восьми років тест не потрібен — і ось чому</h2>
+                <p class="p lead" style="margin-top:16px">
+                    У цьому віці ще рано обирати напрямок. Різниця між дітьми тут не в схильностях,
+                    а в темпі: та сама дитина за півроку може змінитись сильніше, ніж підліток за три.
+                </p>
+                <p class="p lead">
+                    Тому для 8–9 років старт один для всіх: перша гра і перша анімація, зібрані
+                    з блоків, а не написані кодом. Років у 10–11 уже видно, куди тягне, і звідти
+                    дитина йде в програмування або в дизайн.
+                </p>
+                <p class="p lead">
+                    Найпростіше — прийти на безкоштовне пробне. За 45 хвилин видно більше, ніж
+                    скаже будь-який тест: як дитина тримає увагу, що її чіпляє, чи готова вона
+                    до занять узагалі. Формат — груповий чи індивідуальний — вирішимо після нього.
+                </p>
+            </div>
+            <div id="juniorForm"></div>
+        </section>
+
+        <!-- 4 · RESULT -->
+        <section class="screen" id="s-result">
+            <div class="card">
+                <div class="tag">Що ми побачили у ваших відповідях</div>
+                <h2 id="rName"></h2>
+                <div id="rPortrait" style="margin-top:16px"></div>
+            </div>
+
+            <div class="card paper">
+                <div class="verdict" id="rCourse"></div>
+                <div class="mono" style="opacity:.55;margin-bottom:12px" id="rWhyLabel">Чому ми радимо саме цей напрямок</div>
+                <ul class="why" id="rWhy"></ul>
+                <div class="second" id="rSecond"></div>
+            </div>
+
+            <div class="disc">
+                Це не діагностика і не психологічний тест. Це припущення на основі восьми відповідей
+                і того, як діти цього віку поводяться на наших заняттях. Помилитись тут легко — і якщо
+                ми помилились, це стане видно на першому ж занятті. Тоді ми скажемо вам прямо,
+                а не робитимемо вигляд, що все зійшлося.
+                <div class="sign">
+                    NEUTRON · школа програмування та дизайну, Луцьк
+                    <span>Понад 5 років викладання і понад 100 дітей, які через нього пройшли.</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 id="rProjTitle"></h3>
+                <div id="rProjects"></div>
+            </div>
+
+            <div class="card">
+                <h3>Куди це веде</h3>
+                <div id="rFuture"></div>
+            </div>
+
+            <div id="resultForm"></div>
+
+            <div class="scores" id="rScores"></div>
+        </section>
+
+    </div>
+
+    <footer>NEUTRON SCHOOL · Луцьк · <a href="../" style="text-decoration:underline">на головну</a></footer>
+
+    <script>
+        /* ═══ КОНСТАНТИ ═══ */
+        var MAKE_WEBHOOK = 'https://hook.eu2.make.com/477y2alcxf6dpjj4ltiwnri3yr3tmoi1';
+        var FORM_TOKEN = 'ntr_2026_9f3a';
+        var THANKS = '../thanks.html';
+
+        /* ═══ ПИТАННЯ ═══
+           s = бали: p Python, f Front-End, d Design
+           Порядок варіантів перемішаний навмисно — див. документ, правило 6 */
+        var Q = [
+            {
+                t: 'Який предмет у школі {N} опановує найлегше?',
+                o: [
+                    { t: 'Математика, фізика, інформатика', s: { p: 3 } },
+                    { t: 'Мови, література, історія', s: { f: 3 } },
+                    { t: 'Малювання, музика, мистецтво', s: { d: 3 } },
+                    { t: 'Немає чіткого — вчиться приблизно рівно', s: { p: 1, f: 1, d: 1 } }
+                ]
+            },
+            {
+                t: 'Вільний вечір, ніхто нічого не просить. Чим {N} займеться?',
+                o: [
+                    { t: 'Малює, майструє, знімає або монтує відео', s: { d: 3 } },
+                    { t: 'Грає в компʼютерні ігри', s: { p: 3, f: 1 } },
+                    { t: 'Дивиться ролики, гортає стрічку', s: { p: 1, f: 1, d: 1 } },
+                    { t: 'Розбирається, як щось влаштоване: конструктори, техніка', s: { f: 3, p: 1 } }
+                ]
+            },
+            {
+                t: 'Соцмережі зараз є майже в кожної дитини. Що з ними робить {N}?',
+                o: [
+                    { t: 'Майже не користується', s: { p: 3 } },
+                    { t: 'Публікує сторіз, фото, відео, оформлює профіль', s: { d: 3 } },
+                    { t: 'Користується активно, але нічого не публікує', s: { f: 2, p: 1 } },
+                    { t: 'Каже, що хоче вести свій блог або канал', s: { d: 3, f: 1 } }
+                ]
+            },
+            {
+                t: 'Яку тематику у фільмі або грі скоріше обере {N}?',
+                o: [
+                    { t: 'Фантастика: роботи, космос, інші світи, стратегії', s: { p: 2 } },
+                    { t: 'Про те, як щось створюють: будують, знімають, роблять речі', s: { f: 2, d: 1 } },
+                    { t: 'Яскраве й естетичне: аніме, кліпи, сильна картинка', s: { d: 2 } },
+                    { t: 'Детективи, головоломки, складний сюжет', s: { p: 2, f: 1 } }
+                ]
+            },
+            {
+                t: 'Що робить {N}, коли щось не виходить з першого разу?',
+                o: [
+                    { t: 'Розпитує, зʼясовує деталі, потім робить', s: { f: 2 } },
+                    { t: 'Копирсається, поки не вийде', s: { p: 2 } },
+                    { t: 'Відкладає або шукає, хто допоможе', s: {} },
+                    { t: 'Швидко згасає, якщо не видно результату', s: { d: 2 } }
+                ]
+            },
+            {
+                t: 'Що з цього найбільше схоже на вашу дитину?',
+                o: [
+                    { t: 'Фантазія і власний світ — багато вигадує', s: { d: 2 } },
+                    { t: 'Спокій і звичка розібратись до кінця', s: { p: 2 } },
+                    { t: 'Багато енергії, швидко загорається', s: { f: 1, d: 1 } },
+                    { t: 'Цікавість до всього нового, багато питань', s: { f: 2 } }
+                ]
+            },
+            {
+                t: 'Наскільки {N} на «ти» з компʼютером?',
+                o: [
+                    { t: 'Користується помірно', s: { f: 1 } },
+                    { t: 'Впевнено — все знаходить і налаштовує без допомоги', s: { p: 1, f: 1 } },
+                    { t: 'Майже не користується, тільки телефон', s: { d: 1 } }
+                ]
+            },
+            {
+                t: 'І останнє — про вас. Що для вас найважливіше в майбутній професії дитини?',
+                o: [
+                    { t: 'Стабільність і хороший дохід', s: {}, v: 'stability' },
+                    { t: 'Можливість працювати на себе, гнучкий графік', s: {}, v: 'freelance' },
+                    { t: 'Творчість і самовираження', s: {}, v: 'creative' },
+                    { t: 'Робота на міжнародному ринку', s: {}, v: 'global' }
+                ]
+            }
+        ];
+
+        var MAXP = { p: 16, f: 15, d: 16 };
+
+        /* ═══ БАНК ПОРТРЕТА ═══ */
+        var P1 = [ // з Q6 (характер) — тут стоїть помʼякшення
+            '{N} більше живе в тому, що придумує, ніж у тому, що вже є. <b>Такі діти рідко роблять «як усі»</b> — і це радше ресурс, ніж проблема.',
+            '{N} з тих дітей, які <b>спершу дивляться, а потім роблять</b>. Не поспішає — але й не діє наосліп.',
+            '{N} <b>швидко загорається новим</b>. Питання тут не «чи зацікавиться», а чи побачить результат раніше, ніж інтерес згасне.',
+            '{N} <b>спершу хоче зрозуміти, як воно влаштоване</b>, і аж потім братися. Багато питає — і це майже ніколи не про невпевненість.'
+        ];
+        var P1PRE = ['Судячи з ваших відповідей, ', 'Судячи з відповідей, ', 'З того, що ви описали, ', 'Схоже, '];
+
+        var P2 = [ // з Q5 (реакція на складне)
+            'Коли впирається у складне — зʼясовує деталі. <b>Такі діти повільніше стартують, зате не роблять одну помилку двічі.</b>',
+            'Коли щось не виходить — не кидає. <b>Це найрідкісніша з якостей, потрібних у програмуванні:</b> більша частина роботи розробника — пошук того, що зламалось.',
+            'Складне поки що радше відкладає. Ми бачили це багато разів, і майже завжди воно означало одне: <b>попередній досвід був такий, де зусилля не давало видимого результату.</b>',
+            'Якщо результату не видно, інтерес згасає швидко. Це не про терпіння — <b>потрібна справа, де одразу видно, що змінилось.</b>'
+        ];
+
+        var P3 = [ // з Q2 (місток)
+            'І головне: <b>{N} вже щось створює руками.</b> Цифрові інструменти цього не замінюють — вони знімають обмеження.',
+            'І окремо про ігри. Для нас це не мінус, а стартова точка: <b>дитина вже всередині цифрового світу</b>, питання лише в тому, з якого боку екрана.',
+            'І чесно про головне: зараз {N} радше споживає те, що зробили інші. <b>Саме цю позицію ми і змінюємо</b> — не забороною екрана, а переходом на інший його бік.',
+            'І ще одне: <b>{N} хоче знати не лише результат, а й механізм.</b> Це зустрічається рідше, ніж здається.'
+        ];
+
+        /* ═══ БАНК ПРИЧИН ═══ [індекс питання, індекс варіанта] → текст */
+        var WHY = {
+            p: {
+                '0-0': 'Точні предмети даються легко — Python починається саме там, де {N} вже почувається впевнено.',
+                '1-1': 'Грає в ігри. <b>Python — найкоротший шлях від «граю» до «зробив сам».</b>',
+                '2-0': 'Не залипає в соцмережах. Python — напрямок, де результат оцінює не аудиторія, а сама задача: працює або не працює.',
+                '3-0': 'Фантастика, роботи, стратегії — це той самий інтерес до систем і правил, на якому тримається програмування.',
+                '3-3': 'Любить складний сюжет і головоломки. Код — та сама задача: є умова, є розвʼязок і є момент, коли зійшлося.',
+                '4-1': 'Не кидає, поки не вийде. <b>У програмуванні це важливіше за здібності.</b>',
+                '5-1': 'Спокій і звичка розбиратись до кінця. <b>Python вимагає тримати кілька кроків наперед</b>, і таким дітям це дається природно.',
+                '0-3': 'Чіткого улюбленого предмета немає — і це не мінус. Python не спирається на шкільну програму: там усе починається з нуля і від власної задачі.',
+                '1-2': 'Багато часу в стрічці. Python — найкоротший спосіб перевести цей час у зроблене: те саме залипання, але з файлом на виході.',
+                '1-3': 'Розбирається, як щось влаштоване. Код — це і є механізм, який можна розібрати й зібрати назад скільки завгодно разів.',
+                '2-2': 'Дивиться багато, публікує мало. Python не вимагає нічого показувати публічно — результат оцінює задача, а не аудиторія.',
+                '6-1': 'З компʼютером на «ти». Це знімає з перших занять половину складнощів: не треба вчити, де що лежить.'
+            },
+            f: {
+                '0-1': 'Гуманітарні предмети даються легко. Це плюс, хоч і звучить несподівано: <b>верстка — робота з текстом і структурою, а не з формулами.</b>',
+                '1-3': 'Цікавить, як щось влаштоване. Front-End — єдиний напрямок, де можна відкрити будь-який сайт у світі й подивитись, як він зроблений зсередини.',
+                '2-2': 'Багато часу в соцмережах, але нічого не викладає. <b>Front-End дає третю позицію:</b> не споживач і не блогер, а той, хто робить самі ці інтерфейси.',
+                '3-1': 'Цікаво дивитись, як щось створюють. Тут від ідеї до готової сторінки в інтернеті проходить один вечір.',
+                '4-0': 'Спершу зʼясовує, потім робить. <b>У коді це найефективніший з можливих підходів.</b>',
+                '5-3': 'Багато питань про все нове. <b>Front-End саме на цьому й тримається:</b> кожен новий сайт — це нове «а як вони це зробили».',
+                '0-3': 'Чіткого улюбленого предмета немає. Front-End добре заходить саме таким дітям: там не треба бути сильним у чомусь одному, там треба бачити ціле.',
+                '1-1': 'Грає в ігри. У Front-End інтерфейс — це те саме: правила, реакція на дію, миттєвий відгук. Тільки цього разу правила пише дитина.',
+                '1-2': 'Багато часу в стрічці. Front-End — це і є те, всередині чого {N} зараз проводить вечори. Різниця лише в тому, з якого боку екрана.',
+                '2-3': 'Хоче свій блог або канал. Власна сторінка — те, що відрізняє свій проєкт від акаунта на чужій платформі.',
+                '3-3': 'Любить складний сюжет і головоломки. У верстці та сама механіка: зібрати ціле з деталей, які мають зійтись.',
+                '5-2': 'Багато енергії, швидко загорається. <b>Front-End тримає такий темп:</b> результат кожної дії видно на екрані одразу.',
+                '6-0': 'Користується компʼютером помірно. Для Front-End цього досить — тут не потрібна технічна база на старті, потрібне око і терпіння.',
+                '6-1': 'З компʼютером на «ти». У Front-End це одразу перетворюється на швидкість: менше часу на інструмент, більше на саму роботу.'
+            },
+            d: {
+                '0-2': 'Творчі предмети даються легко. Digital Design — те саме вміння, переведене в професію, на яку є попит.',
+                '1-0': '<b>Уже щось створює руками.</b> Figma не замінює це вміння — вона дає йому інструмент і масштаб.',
+                '2-1': 'Уже публікує власний контент. Тобто <b>вже працює з композицією, кольором і подачею</b> — просто без інструментів і без теорії.',
+                '2-3': 'Хоче робити свій контент. Дизайн — та база, без якої канал виглядає аматорськи, скільки б у нього не вкладали.',
+                '3-2': 'Тягнеться до візуально сильного. Це не «просто подобається» — це напрацьоване око, з якого і починається дизайнер.',
+                '4-3': 'Швидко втрачає інтерес, якщо результату не видно. <b>У дизайні результат видно за перші пʼятнадцять хвилин.</b>',
+                '5-0': 'Фантазія і власний світ. <b>Дизайн — професія, де це не заважає працювати, а й є роботою.</b>',
+                '0-3': 'Чіткого улюбленого предмета немає. У дизайні шкільні оцінки взагалі нічого не вирішують — там працює око, а не табель.',
+                '1-2': 'Багато часу в стрічці. Це не порожній час: дитина щодня дивиться сотні чужих робіт і вже має думку, що виглядає добре, а що ні.',
+                '3-1': 'Цікаво дивитись, як щось створюють. Дизайн — це і є видима частина будь-якого створеного: те, з чим людина стикається першим.',
+                '5-2': 'Багато енергії й емоцій. <b>У дизайні це працює:</b> перша версія макета зʼявляється за пів години, а не за місяць.',
+                '6-2': 'Компʼютером майже не користується, тільки телефоном. Для дизайну це найменша перешкода з трьох напрямків — базове опанувати можна за два-три заняття.'
+            }
+        };
+
+        /* запасні причини — якщо відповіді нейтральні і сильних тригерів менше трьох */
+        var WHYFALL = {
+            p: ['Python — найширший з трьох напрямків за тим, куди він веде далі: від ботів до аналітики й ігор.',
+                'Це напрямок, де кожен крок можна перевірити одразу: запустив — або працює, або ні.'],
+            f: ['Front-End дає найшвидший видимий результат: сторінка в інтернеті зʼявляється вже на перших заняттях.',
+                'Це напрямок, де творче й технічне не конфліктують, а потрібні одночасно.'],
+            d: ['Дизайн не вимагає технічної бази на старті — почати можна з нуля в будь-якому віці.',
+                'Це напрямок, де результат роботи видно одразу і його не треба нікому пояснювати.']
+        };
+
+        var NAMES = { p: 'Python розробка', f: 'Front-End розробка', d: 'Digital Design' };
+
+        /* ═══ БЛОК «ЩО ЗРОБИТЬ ЗА 2 МІСЯЦІ» ═══ */
+        var PROJ = {
+            p: ['За перші два місяці {N} напише свою гру. <b>Спершу текстову</b> — таку, що працює в терміналі: з вибором, з наслідками, з рахунком і можливістю програти. Звучить скромно рівно доти, доки не побачиш, як дитина вперше запускає власний файл і розуміє, що це зробила вона.',
+                'Графіка й керування з клавіатури зʼявляються далі, у другій частині курсу. Ми навмисно не починаємо з них: гра, у якій усе красиво, але дитина не розуміє, чому воно працює, не дає нічого.'],
+            f: ['<b>Свою сторінку в інтернеті</b> — за реальною адресою, яку можна відкрити з будь-якого телефону і скинути друзям. Не макет і не «майже готово»: працюючий сайт, який живе в мережі.',
+                'Далі — перший інтерактив: кнопки, які щось роблять, форма, яка щось приймає. Це момент, коли сторінка перестає бути картинкою.'],
+            d: ['<b>Готовий екран мобільного застосунку у Figma</b> — такий, який не соромно покласти в портфоліо. І повну айдентику вигаданого бренду: логотип, кольори, шрифти, як це виглядає на упаковці й у сторіз.',
+                'До кінця другого місяця це будуть не «малюнки», а <b>роботи, оформлені як роботи дизайнера</b>.']
+        };
+        var PROJ16 = 'У цьому віці це вже не «для розвитку». Це перші дві-три роботи в портфоліо, з якими можна йти шукати замовлення.';
+
+        /* ═══ БЛОК «КУДИ ВЕДЕ» ═══ Q8 × курс */
+        var FUT = {
+            stability: {
+                p: 'Розробники — найстабільніший сегмент IT: попит тримається навіть у слабкі роки, бо без них не працює нічого.',
+                f: 'Front-End — найчастіша перша позиція в IT. З неї починають, бо вхід реальний, а далі шлях відкритий у будь-який бік.',
+                d: 'Продуктовий дизайнер сьогодні коштує стільки ж, скільки розробник. Це вже не «творча професія без грошей».'
+            },
+            freelance: {
+                p: 'Боти, автоматизація, невеликі сервіси — це те, що можна робити самому і продавати без роботодавця.',
+                f: 'Сайти на замовлення — найпростіший вхід у фріланс. Перші платні роботи цілком реальні в 16.',
+                d: 'Дизайн — найшвидший вхід у фріланс з трьох напрямків: замовлення на логотип чи макет знаходяться раніше за все інше.'
+            },
+            creative: {
+                p: 'У програмуванні творчість інша, ніж здається: ти не малюєш, ти вигадуєш, як зробити те, чого ще немає.',
+                f: 'Front-End — рідкісне місце, де творче й технічне зустрічаються в одній людині. Ти і придумуєш вигляд, і сам його оживляєш.',
+                d: 'Тут творчість і є роботою. Не хобі після роботи, не «для душі» — а те, за що платять.'
+            },
+            global: {
+                p: 'Python — мова без кордонів: код однаковий у Луцьку і в Берліні, а віддалені позиції відкриті майже завжди.',
+                f: 'Веб влаштований так, що місце проживання розробника не має значення. Замовник може бути будь-де.',
+                d: 'Дизайн не має мовного барʼєру. Портфоліо говорить саме, і цим воно сильніше за резюме.'
+            }
+        };
+
+        /* ═══ СТАН ═══ */
+        var st = { name: '', age: '', i: 0, ans: [], route: '' };
+
+        function $(id) { return document.getElementById(id); }
+        function nm(s) { return s.split('{N}').join(st.name || 'дитина'); }
+        function show(id) {
+            var all = document.querySelectorAll('.screen');
+            for (var k = 0; k < all.length; k++) all[k].classList.remove('on');
+            $(id).classList.add('on');
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+        function fb(ev, params) { if (typeof fbq !== 'undefined') { try { fbq('trackCustom', ev, params || {}); } catch (e) { } } }
+
+        /* вік 8–17 */
+        (function () {
+            var sel = $('q-age');
+            for (var a = 8; a <= 17; a++) {
+                var o = document.createElement('option');
+                o.value = a; o.textContent = a + ' років';
+                sel.appendChild(o);
+            }
+        })();
+
+        /* ═══ КРОКИ ═══ */
+        $('startBtn').addEventListener('click', function () {
+            fb('QuizStart');
+            show('s-intro');
+            setBar(1);
+        });
+
+        function setBar(step) {
+            var total = 9;
+            $('bar').style.width = Math.round(step / total * 100) + '%';
+            $('stepLabel').textContent = step > 0 && step <= total ? step + ' / ' + total : '';
+        }
+
+        $('introBtn').addEventListener('click', function () {
+            var n = $('q-name').value.trim();
+            var a = $('q-age').value;
+            var bad = (n.length < 2 || !a);
+            $('q-name').classList.toggle('bad', n.length < 2);
+            $('q-age').classList.toggle('bad', !a);
+            $('err-intro').classList.toggle('show', bad);
+            if (bad) return;
+
+            st.name = n; st.age = a;
+
+            if (a === '8' || a === '9') {
+                st.route = 'junior_8_9';
+                fb('QuizJunior', { age: a });
+                buildForm('juniorForm', 'junior');
+                show('s-junior');
+                setBar(9);
+                return;
+            }
+            st.i = 0;
+            renderQ();
+        });
+
+        $('backBtn').addEventListener('click', function () {
+            if (st.i === 0) { show('s-intro'); setBar(1); return; }
+            st.i--;
+            st.ans.pop();
+            renderQ();
+        });
+
+        function renderQ() {
+            var q = Q[st.i];
+            $('qTag').textContent = 'Питання ' + (st.i + 1) + ' з ' + Q.length;
+            $('qTitle').textContent = nm(q.t);
+            var box = $('qOpts');
+            box.innerHTML = '';
+            for (var j = 0; j < q.o.length; j++) {
+                (function (idx) {
+                    var b = document.createElement('button');
+                    b.className = 'opt';
+                    b.type = 'button';
+                    b.textContent = q.o[idx].t;
+                    b.addEventListener('click', function () { pick(idx); });
+                    box.appendChild(b);
+                })(j);
+            }
+            show('s-q');
+            setBar(st.i + 2);
+            fb('QuizStep', { step: st.i + 1 });
+        }
+
+        function pick(idx) {
+            st.ans[st.i] = idx;
+            if (st.i < Q.length - 1) { st.i++; renderQ(); }
+            else finish();
+        }
+
+        /* ═══ ПІДРАХУНОК ═══ */
+        function score() {
+            var raw = { p: 0, f: 0, d: 0 };
+            for (var i = 0; i < Q.length; i++) {
+                var s = Q[i].o[st.ans[i]].s || {};
+                raw.p += s.p || 0; raw.f += s.f || 0; raw.d += s.d || 0;
+            }
+            /* нормалізація: без неї Front-End структурно програє */
+            var pct = {
+                p: Math.round(raw.p / MAXP.p * 100),
+                f: Math.round(raw.f / MAXP.f * 100),
+                d: Math.round(raw.d / MAXP.d * 100)
+            };
+            var order = ['p', 'f', 'd'].sort(function (a, b) {
+                if (pct[b] !== pct[a]) return pct[b] - pct[a];
+                /* нічия → вирішує Q1, далі Q2 */
+                var s1 = Q[0].o[st.ans[0]].s || {}, s2 = Q[1].o[st.ans[1]].s || {};
+                if ((s1[b] || 0) !== (s1[a] || 0)) return (s1[b] || 0) - (s1[a] || 0);
+                return (s2[b] || 0) - (s2[a] || 0);
+            });
+            var spread = pct[order[0]] - pct[order[2]];
+            return {
+                pct: pct, order: order,
+                win: order[0],
+                second: (pct[order[0]] - pct[order[1]] < 15) ? order[1] : '',
+                mixed: spread <= 8
+            };
+        }
+
+        function reasons(win) {
+            var out = [];
+            for (var i = 0; i < Q.length; i++) {
+                var key = i + '-' + st.ans[i];
+                var txt = WHY[win][key];
+                if (!txt) continue;
+                var pts = (Q[i].o[st.ans[i]].s || {})[win] || 0;
+                out.push({ q: i, pts: pts, t: txt });
+            }
+            out.sort(function (a, b) { return b.pts - a.pts || a.q - b.q; });
+            var res = out.slice(0, 3).map(function (x) { return nm(x.t); });
+            var k = 0;
+            while (res.length < 3 && k < WHYFALL[win].length) { res.push(nm(WHYFALL[win][k])); k++; }
+            return res;
+        }
+
+        /* ═══ РЕЗУЛЬТАТ ═══ */
+        function finish() {
+            var r = score();
+            var win = r.win;
+            var age = parseInt(st.age, 10);
+            var val = Q[7].o[st.ans[7]].v;
+
+            $('rName').textContent = st.name + ', ' + st.age + ' років';
+
+            var por = P1PRE[st.ans[5]] + P1[st.ans[5]];
+            $('rPortrait').innerHTML =
+                '<p class="p lead">' + nm(por) + '</p>' +
+                '<p class="p lead">' + nm(P2[st.ans[4]]) + '</p>' +
+                '<p class="p lead">' + nm(P3[st.ans[1]]) + '</p>';
+
+            if (r.mixed) {
+                $('rCourse').textContent = 'Одного очевидного напрямку немає — і це нормально';
+                $('rWhyLabel').textContent = 'Що це означає';
+                $('rWhy').innerHTML =
+                    '<li>Відповіді розклались майже рівно між трьома напрямками. Так буває у двох випадках: або дитина ще не пробувала нічого всерйоз, або їй справді цікаво все. Обидва нормальні для цього віку.</li>' +
+                    '<li>У нас немає «головного» курсу — всі три робочі, і ми не вдаватимемо, ніби один із них кращий. Але якщо радити щось одне, ми б починали з Front-End: з нього найшвидше видно, куди дитину тягне далі.</li>' +
+                    '<li>Перехід між напрямками у нас можливий і не коштує нічого. Через два-три місяці стане зрозуміло, у логіку чи в картинку.</li>';
+                $('rSecond').textContent = 'У такій ситуації одне заняття скаже більше, ніж будь-який тест.';
+                win = 'f';
+            } else {
+                $('rCourse').textContent = NAMES[win];
+                var ws = reasons(win);
+                $('rWhy').innerHTML = ws.map(function (x) { return '<li>' + x + '</li>'; }).join('');
+                $('rSecond').textContent = r.second
+                    ? 'Другий за близькістю — ' + NAMES[r.second] + '. Якщо на пробному ' + st.name + ' потягне в інший бік, ми це побачимо і скажемо вам.'
+                    : '';
+                if (!r.second) $('rSecond').style.display = 'none';
+            }
+
+            $('rProjTitle').textContent = 'Що ' + st.name + ' зробить за перші два місяці';
+            var pr = PROJ[win].map(function (x) { return '<p class="p lead">' + nm(x) + '</p>'; });
+            if (age >= 16) pr.push('<p class="p lead">' + PROJ16 + '</p>');
+            $('rProjects').innerHTML = pr.join('');
+
+            $('rFuture').innerHTML = '<p class="p lead">' + FUT[val][win] + '</p>';
+
+            $('rScores').textContent = 'Python ' + r.pct.p + '% · Front-End ' + r.pct.f + '% · Design ' + r.pct.d + '%';
+
+            st.res = { win: win, second: r.second, pct: r.pct, val: val, mixed: r.mixed };
+
+            buildForm('resultForm', 'result');
+            show('s-result');
+            setBar(9);
+            fb('QuizComplete', { result: win, age: st.age });
+        }
+
+        /* ═══ ФОРМА ═══ */
+        function buildForm(hostId, kind) {
+            var who = st.name || 'дитину';
+            var head = kind === 'junior'
+                ? '<h3>Записатись на безкоштовне пробне</h3>'
+                : '<h3>Наступний крок</h3><p class="p lead" style="margin-bottom:6px">Тест показує схильність. Чи справді зайде — видно тільки на практиці.</p><p class="p lead" style="margin-bottom:18px"><b>Безкоштовне пробне заняття, 45 хвилин.</b> За цей час ' + who + ' зробить свій перший робочий проєкт і забере його з собою.</p>';
+
+            $(hostId).innerHTML =
+                '<div class="card">' + head +
+                '<div class="fg"><label for="p-name">Ваше імʼя</label><input type="text" id="p-name" placeholder="Наприклад: Олена" autocomplete="name"></div>' +
+                '<div class="fg"><label for="p-phone">Номер телефону</label><input type="tel" id="p-phone" placeholder="+380 50 000 00 00" autocomplete="tel"></div>' +
+                '<div class="err" id="err-form">Перевірте імʼя та номер телефону</div>' +
+                '<button class="btn wide" id="sendBtn">Записатись на пробне</button>' +
+                '<div class="privacy">Передзвонимо протягом дня, узгодимо час. Нічого оплачувати не треба.</div>' +
+                '</div>';
+
+            var pn = $('p-phone');
+            pn.addEventListener('input', function () { pn.classList.remove('bad'); $('err-form').classList.remove('show'); });
+            $('sendBtn').addEventListener('click', send);
+        }
+
+        function validPhone(v) {
+            var d = v.replace(/\D/g, '');
+            return (d.length === 10 && d.charAt(0) === '0') || (d.length === 12 && d.slice(0, 3) === '380');
+        }
+
+        function tracking() {
+            var p = new URLSearchParams(location.search);
+            return {
+                utm_source: p.get('utm_source') || '',
+                utm_medium: p.get('utm_medium') || '',
+                utm_campaign: p.get('utm_campaign') || '',
+                utm_content: p.get('utm_content') || '',
+                utm_term: p.get('utm_term') || '',
+                fbclid: p.get('fbclid') || ''
+            };
+        }
+
+        function send() {
+            var nameEl = $('p-name'), phoneEl = $('p-phone');
+            var n = nameEl.value.trim(), ph = phoneEl.value.trim();
+            var badN = n.length < 2, badP = !validPhone(ph);
+            nameEl.classList.toggle('bad', badN);
+            phoneEl.classList.toggle('bad', badP);
+            $('err-form').classList.toggle('show', badN || badP);
+            if (badN || badP) return;
+
+            var eid = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
+            var res = st.res || {};
+
+            var data = Object.assign({
+                client: n,
+                number: ph,
+                age: st.age,
+                course: st.route ? 'Молодша група (8–9)' : NAMES[res.win],
+                source: 'quiz',
+                route: st.route,
+                token: FORM_TOKEN,
+                child_name: st.name,
+                result_primary: res.win || '',
+                result_secondary: res.second || '',
+                result_mixed: res.mixed ? '1' : '',
+                score_python: res.pct ? res.pct.p : '',
+                score_frontend: res.pct ? res.pct.f : '',
+                score_design: res.pct ? res.pct.d : '',
+                parent_value: res.val || '',
+                answers: st.ans.join(','),
+                page: location.href,
+                referrer: document.referrer || 'Direct',
+                event_id: eid,
+                timestamp: new Date().toISOString()
+            }, tracking());
+
+            var b = $('sendBtn');
+            b.textContent = 'Надсилаємо...';
+            b.classList.add('loading');
+
+            /* Тіло як form-urlencoded і БЕЗ Content-Type — інакше браузер шле
+               попередній OPTIONS, і Make отримує порожній запит. */
+            fetch(MAKE_WEBHOOK, { method: 'POST', body: new URLSearchParams(data) })
+                .catch(function (e) { console.log('Make:', e); })
+                .then(function () {
+                    window.location.href = THANKS + '?eid=' + encodeURIComponent(eid) + '&src=quiz';
+                });
+        }
+    </script>
+
+</body>
+
+</html>
