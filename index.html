@@ -644,6 +644,123 @@
         }
 
        /* ── REVIEWS ── */
+
+        /* ── РОБОТИ УЧНІВ ── */
+        .works-sub {
+            margin-top: 12px;
+            max-width: 640px;
+            font-size: 17px;
+            opacity: .8;
+        }
+
+        .works {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+        }
+
+        .work {
+            border: 2px solid var(--ink);
+            background: var(--navy-deep);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 8px 8px 0 var(--cyan);
+            transition: transform .12s, box-shadow .12s;
+        }
+
+        .work:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 11px 11px 0 var(--cyan);
+        }
+
+        .work-shot {
+            display: block;
+            border-bottom: 2px solid var(--ink);
+            background: var(--paper);
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+        }
+
+        .work-shot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        .work-meta {
+            padding: 18px 18px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            flex: 1;
+        }
+
+        .work-who {
+            color: var(--cyan);
+            font-size: 11px;
+        }
+
+        .work-what {
+            font-size: 15px;
+            line-height: 1.45;
+            opacity: .82;
+            flex: 1;
+        }
+
+        .work-link {
+            color: var(--orange);
+            font-size: 12px;
+            align-self: flex-start;
+            border-bottom: 2px solid var(--orange);
+            padding-bottom: 2px;
+        }
+
+        .work-link:hover { color: var(--paper); border-color: var(--paper) }
+
+        .proof {
+            margin-top: 54px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(244, 247, 245, .2);
+        }
+
+        .proof-note {
+            color: var(--grey);
+            margin-bottom: 16px;
+        }
+
+        .proof-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .proof-item {
+            display: block;
+            border: 2px solid var(--paper);
+            background: var(--paper);
+            max-height: 190px;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .proof-item img {
+            width: 100%;
+            display: block;
+        }
+
+        @media (max-width:900px) {
+            .works { grid-template-columns: repeat(2, 1fr) }
+        }
+
+        @media (max-width:640px) {
+            .works { grid-template-columns: 1fr }
+            .work { box-shadow: 6px 6px 0 var(--cyan) }
+            .proof-row { grid-template-columns: 1fr; gap: 14px }
+            .proof-item { max-height: 260px }
+        }
+
         .reviews {
             column-count: 3;
             column-gap: 26px;
@@ -1146,7 +1263,7 @@
             <div class="nav-links">
                 <a href="#courses" class="mono">Напрямки</a>
                 <a href="#formats" class="mono">Формати</a>
-                <a href="#reviews" class="mono">Відгуки</a>
+                <a href="#works" class="mono">Роботи</a>
                 <a href="#how" class="mono">Навчання</a>
                 <a href="#form" class="btn" style="padding:11px 20px;box-shadow:3px 3px 0 var(--paper)">Пробне</a>
             </div>
@@ -1157,7 +1274,7 @@
     <div class="m-menu" id="mmenu">
         <a href="#courses" onclick="closeMenu()">Напрямки</a>
         <a href="#formats" onclick="closeMenu()">Формати</a>
-        <a href="#reviews" onclick="closeMenu()">Відгуки</a>
+        <a href="#works" onclick="closeMenu()">Роботи</a>
         <a href="#how" onclick="closeMenu()">Навчання</a>
         <a href="#form" onclick="closeMenu()" style="color:var(--orange)">Записатись на пробне →</a>
     </div>
@@ -1357,43 +1474,73 @@
     </section>
 
     <!-- 05 REVIEWS -->
-    <section id="reviews">
+    <section id="works">
         <div class="wrap">
             <div class="head">
                 <div class="num">05</div>
                 <div>
-                    <h2>Що кажуть батьки</h2>
+                    <h2>Роботи учнів</h2>
+                    <p class="works-sub">Не портфоліо школи і не приклади з інтернету. Це зробили діти, які прийшли
+                        сюди з нуля. Посилання живі — відкрийте й перевірте.</p>
                 </div>
             </div>
 
-            <div class="reviews">
- 
-                <figure class="review">
-                    <img src="assets/reviews/1.png" alt="Відгук батьків про NEUTRON" loading="lazy">
-                    <figcaption class="mono">
-                        <span class="who">Олена</span>
-                        <span class="what">Front-End · 6 місяців</span>
-                    </figcaption>
-                </figure>
- 
-                <figure class="review">
-                    <img src="assets/reviews/2.png" alt="Відгук батьків про NEUTRON" loading="lazy">
-                    <figcaption class="mono">
-                        <span class="who">Ігор</span>
-                        <span class="what">Python · 4 місяці</span>
-                    </figcaption>
-                </figure>
- 
-                <figure class="review">
-                    <img src="assets/reviews/3.png" alt="Відгук батьків про NEUTRON" loading="lazy">
-                    <figcaption class="mono">
-                        <span class="who">Наталія</span>
-                        <span class="what">Digital Design · 8 місяців</span>
-                    </figcaption>
-                </figure>
- 
+            <div class="works">
+
+                <!-- ▼ РОБОТА 1 — сайт із посиланням -->
+                <article class="work">
+                    <a class="work-shot" href="ПОСИЛАННЯ_НА_САЙТ_1" target="_blank" rel="noopener">
+                        <img src="assets/works/1.png" alt="Сайт, зроблений учнем NEUTRON" loading="lazy">
+                    </a>
+                    <div class="work-meta">
+                        <div class="mono work-who">ІМʼЯ, ВІК · FRONT-END</div>
+                        <p class="work-what">ОДНЕ РЕЧЕННЯ: що це і за скільки занять зроблено.</p>
+                        <a class="work-link mono" href="ПОСИЛАННЯ_НА_САЙТ_1" target="_blank" rel="noopener">Відкрити
+                            сайт →</a>
+                    </div>
+                </article>
+
+                <!-- ▼ РОБОТА 2 — сайт із посиланням -->
+                <article class="work">
+                    <a class="work-shot" href="ПОСИЛАННЯ_НА_САЙТ_2" target="_blank" rel="noopener">
+                        <img src="assets/works/2.png" alt="Сайт, зроблений учнем NEUTRON" loading="lazy">
+                    </a>
+                    <div class="work-meta">
+                        <div class="mono work-who">ІМʼЯ, ВІК · FRONT-END</div>
+                        <p class="work-what">ОДНЕ РЕЧЕННЯ: що це і за скільки занять зроблено.</p>
+                        <a class="work-link mono" href="ПОСИЛАННЯ_НА_САЙТ_2" target="_blank" rel="noopener">Відкрити
+                            сайт →</a>
+                    </div>
+                </article>
+
+                <!-- ▼ РОБОТА 3 — без посилання (гра або макет) -->
+                <article class="work">
+                    <div class="work-shot no-link">
+                        <img src="assets/works/3.png" alt="Робота учня NEUTRON" loading="lazy">
+                    </div>
+                    <div class="work-meta">
+                        <div class="mono work-who">ІМʼЯ, ВІК · PYTHON</div>
+                        <p class="work-what">ОДНЕ РЕЧЕННЯ: що це і за скільки занять зроблено.</p>
+                    </div>
+                </article>
+
             </div>
-            <p class="reviews-note">Скріншоти реальних переписок. Імена — за згодою батьків, номери приховані.</p>
+
+            <div class="proof">
+                <div class="proof-note mono">Відгуки батьків</div>
+                <div class="proof-row">
+                    <a class="proof-item" href="assets/reviews/1.png" target="_blank" rel="noopener">
+                        <img src="assets/reviews/1.png" alt="Відгук батьків про NEUTRON" loading="lazy">
+                    </a>
+                    <a class="proof-item" href="assets/reviews/2.png" target="_blank" rel="noopener">
+                        <img src="assets/reviews/2.png" alt="Відгук батьків про NEUTRON" loading="lazy">
+                    </a>
+                    <a class="proof-item" href="assets/reviews/3.png" target="_blank" rel="noopener">
+                        <img src="assets/reviews/3.png" alt="Відгук батьків про NEUTRON" loading="lazy">
+                    </a>
+                </div>
+                <p class="reviews-note">Скріншоти реальних переписок. Імена — за згодою батьків, номери приховані.</p>
+            </div>
         </div>
     </section>
 
@@ -1551,6 +1698,7 @@
         }
 
         const MAKE_WEBHOOK = 'https://hook.eu2.make.com/477y2alcxf6dpjj4ltiwnri3yr3tmoi1';
+        const FORM_TOKEN = 'ntr_2026_9f3a';
 
         const form = document.getElementById('leadForm');
         const submitBtn = document.getElementById('submitBtn');
@@ -1579,8 +1727,12 @@
             document.getElementById(errId).classList.toggle('show', bad);
         }
 
+        // Приймаємо тільки українські мобільні: 0XXXXXXXXX або 380XXXXXXXXX.
+        // Старий шаблон {9,13} пропускав девʼятизначні — саме через нього
+        // в таблицю потрапляли номери, за якими нікуди дзвонити.
         function validPhone(v) {
-            return /^\+?[0-9]{9,13}$/.test(v.replace(/[\s\-()]/g, ''));
+            const d = v.replace(/\D/g, '');
+            return (d.length === 10 && d.charAt(0) === '0') || (d.length === 12 && d.slice(0, 3) === '380');
         }
 
         function validate() {
@@ -1595,8 +1747,19 @@
             return ok;
         }
 
-        ['f-name', 'f-phone', 'f-age'].forEach(id => {
+        // Проміжна подія: заявок замало, щоб Meta вийшла з навчання на Lead.
+        // FormStart набирається в 3–5 разів більше і дає алгоритму на чому вчитись.
+        let formStarted = false;
+        function fireFormStart() {
+            if (formStarted) return;
+            formStarted = true;
+            if (typeof fbq !== 'undefined') { try { fbq('trackCustom', 'FormStart'); } catch (e) { } }
+        }
+
+        ['f-name', 'f-phone', 'f-age', 'f-course'].forEach(id => {
             const el = document.getElementById(id);
+            if (!el) return;
+            el.addEventListener('focus', fireFormStart);
             el.addEventListener('input', validate);
             el.addEventListener('change', validate);
         });
@@ -1612,6 +1775,9 @@
                 number: document.getElementById('f-phone').value.trim(),
                 age: document.getElementById('f-age').value,
                 course: document.getElementById('f-course').value || 'Не визначились',
+                source: 'landing',
+                route: '',
+                token: FORM_TOKEN,
                 page: location.href,
                 referrer: document.referrer || 'Direct',
                 event_id: eventId,
