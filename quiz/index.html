@@ -342,6 +342,20 @@
             .row2 { grid-template-columns: 1fr 110px }
             .screen { padding: 32px 0 56px }
         }
+
+        /* липка кнопка запису на екрані результату */
+        #ctaBar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; display: none;
+            background: #22344F; border-top: 2px solid #2FB8CD;
+            padding: 11px 16px calc(11px + env(safe-area-inset-bottom, 0px));
+            box-shadow: 0 -8px 24px rgba(0,0,0,.35) }
+        #ctaBar.on { display: block }
+        #ctaBar .in { max-width: 680px; margin: 0 auto; display: flex; align-items: center; gap: 14px }
+        #ctaBar .t { flex: 1; min-width: 0; font-size: 12px; line-height: 1.3; color: #A9BBD0 }
+        #ctaBar .t b { display: block; color: #F4F7F5; font-size: 14px; margin-bottom: 2px }
+        #ctaBar button { flex: 0 0 auto; background: #FF6B35; color: #14202F; border: 0;
+            font-family: inherit; font-weight: 800; font-size: 13px; letter-spacing: .06em;
+            text-transform: uppercase; padding: 13px 18px; cursor: pointer }
+        body.cta-on { padding-bottom: 88px }
     </style>
 </head>
 
@@ -466,6 +480,11 @@
     </div>
 
     <footer>NEUTRON SCHOOL · Луцьк · <a href="../" style="text-decoration:underline">на головну</a></footer>
+
+    <div id="ctaBar"><div class="in">
+        <div class="t"></div>
+        <button type="button">Записатись</button>
+    </div></div>
 
     <script>
         /* ═══ КОНСТАНТИ ═══ */
@@ -702,6 +721,43 @@
             for (var k = 0; k < all.length; k++) all[k].classList.remove('on');
             $(id).classList.add('on');
             window.scrollTo({ top: 0, behavior: 'auto' });
+            if (id !== 's-result') ctaHide();
+        }
+
+        /* ═══ ЛИПКА КНОПКА ЗАПИСУ ═══
+           Форма стоїть у кінці довгої сторінки результату. Смуга тримає заклик
+           на екрані, поки батько читає, і ховається, коли форма вже видима. */
+        var ctaObs = null;
+        function ctaBarEl() { return document.getElementById('ctaBar'); }
+        function ctaHide() {
+            var b = ctaBarEl(); if (!b) return;
+            if (ctaObs) { ctaObs.disconnect(); ctaObs = null; }
+            b.classList.remove('on');
+            document.body.classList.remove('cta-on');
+        }
+        function ctaShow(who) {
+            var b = ctaBarEl(); if (!b) return;
+            b.querySelector('.t').innerHTML =
+                '<b>Безкоштовне пробне заняття</b>' + who + ' забере свій проєкт';
+            b.classList.add('on');
+            document.body.classList.add('cta-on');
+            if (ctaObs) ctaObs.disconnect();
+            if (window.IntersectionObserver) {
+                ctaObs = new IntersectionObserver(function (es) {
+                    var seen = es[0].isIntersecting;
+                    b.classList.toggle('on', !seen);
+                    document.body.classList.toggle('cta-on', !seen);
+                }, { threshold: .2 });
+                ctaObs.observe(document.getElementById('resultForm'));
+            }
+            b.querySelector('button').onclick = function () {
+                var f = document.getElementById('resultForm');
+                if (f) f.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(function () {
+                    var n = document.getElementById('p-name');
+                    if (n) { try { n.focus({ preventScroll: true }); } catch (e) { n.focus(); } }
+                }, 550);
+            };
         }
         function fb(ev, params) { if (typeof fbq !== 'undefined') { try { fbq('trackCustom', ev, params || {}); } catch (e) { } } }
 
@@ -896,6 +952,7 @@
 
             buildForm('resultForm', 'result');
             show('s-result');
+            ctaShow(st.name || 'дитина');
             setBar(9);
             fb('QuizComplete', { result: win, age: st.age });
         }
@@ -926,17 +983,29 @@
             return (d.length === 10 && d.charAt(0) === '0') || (d.length === 12 && d.slice(0, 3) === '380');
         }
 
+        /* Мітки беруться з адреси, а при переході всередині сайту — з памʼяті вкладки.
+           Без цього друга заявка тієї самої людини приходить без utm_source. */
+        var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'];
         function tracking() {
-            var p = new URLSearchParams(location.search);
-            return {
-                utm_source: p.get('utm_source') || '',
-                utm_medium: p.get('utm_medium') || '',
-                utm_campaign: p.get('utm_campaign') || '',
-                utm_content: p.get('utm_content') || '',
-                utm_term: p.get('utm_term') || '',
-                fbclid: p.get('fbclid') || ''
-            };
+            var p = new URLSearchParams(location.search), out = {}, inUrl = false, i;
+            for (i = 0; i < UTM_KEYS.length; i++) {
+                out[UTM_KEYS[i]] = p.get(UTM_KEYS[i]) || '';
+                if (out[UTM_KEYS[i]]) inUrl = true;
+            }
+            try {
+                if (inUrl) {
+                    sessionStorage.setItem('ntr_utm', JSON.stringify(out));
+                } else {
+                    var saved = sessionStorage.getItem('ntr_utm');
+                    if (saved) {
+                        var sv = JSON.parse(saved);
+                        for (i = 0; i < UTM_KEYS.length; i++) out[UTM_KEYS[i]] = sv[UTM_KEYS[i]] || '';
+                    }
+                }
+            } catch (e) { }
+            return out;
         }
+        try { tracking(); } catch (e) { }   /* зберегти мітки одразу на вході */
 
         function send() {
             var nameEl = $('p-name'), phoneEl = $('p-phone');
