@@ -239,6 +239,43 @@
             opacity: .6
         }
 
+        /* ── КНОПКА ТЕСТУ В ШАПЦІ ── */
+        .nav-quiz {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 11px 18px;
+            background: var(--cyan);
+            color: var(--ink);
+            border: 2px solid var(--ink);
+            box-shadow: 3px 3px 0 var(--paper);
+            transition: transform .12s, box-shadow .12s;
+            white-space: nowrap;
+        }
+
+        .nav-quiz:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 var(--paper)
+        }
+
+        .nav-quiz small {
+            font-size: 10px;
+            opacity: .7;
+            letter-spacing: .06em
+        }
+
+        /* на мобільному пункти меню сховані під бургер — кнопка тесту стоїть поруч з ним */
+        .nav-right {
+            display: none;
+            align-items: center;
+            gap: 14px
+        }
+
         /* ── БАНЕР ТЕСТУ (показується тільки при utm_source=flaer) ── */
         .quiz-bar {
             display: none;
@@ -1209,6 +1246,10 @@
                 display: flex
             }
 
+            .nav-right {
+                display: flex
+            }
+
             .hero-grid,
             .form-grid,
             .teacher {
@@ -1310,10 +1351,13 @@
                 <a href="#formats" class="mono">Формати</a>
                 <a href="#works" class="mono">Роботи</a>
                 <a href="#how" class="mono">Навчання</a>
-                <a href="/quiz/" class="mono" data-quiz style="color:var(--cyan)">Тест</a>
+                <a href="/quiz/" class="nav-quiz" data-quiz>Тест <small>2 хв</small></a>
                 <a href="#form" class="btn" style="padding:11px 20px;box-shadow:3px 3px 0 var(--paper)">Пробне</a>
             </div>
-            <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+            <div class="nav-right">
+                <a href="/quiz/" class="nav-quiz" data-quiz>Тест <small>2 хв</small></a>
+                <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+            </div>
         </div>
     </nav>
 
