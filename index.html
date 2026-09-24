@@ -239,6 +239,41 @@
             opacity: .6
         }
 
+        /* ── БАНЕР ТЕСТУ (показується тільки при utm_source=flaer) ── */
+        .quiz-bar {
+            display: none;
+            background: var(--cyan);
+            color: var(--ink);
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .quiz-bar.show {
+            display: block
+        }
+
+        .quiz-bar a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 14px 18px;
+            text-align: center;
+        }
+
+        .quiz-bar b {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 17px;
+            text-transform: uppercase;
+        }
+
+        .quiz-bar .go {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 7px 12px;
+        }
+
         /* ── HERO ── */
         .hero {
             padding: 76px 0 84px;
@@ -1275,6 +1310,7 @@
                 <a href="#formats" class="mono">Формати</a>
                 <a href="#works" class="mono">Роботи</a>
                 <a href="#how" class="mono">Навчання</a>
+                <a href="/quiz/" class="mono" data-quiz style="color:var(--cyan)">Тест</a>
                 <a href="#form" class="btn" style="padding:11px 20px;box-shadow:3px 3px 0 var(--paper)">Пробне</a>
             </div>
             <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
@@ -1286,7 +1322,16 @@
         <a href="#formats" onclick="closeMenu()">Формати</a>
         <a href="#works" onclick="closeMenu()">Роботи</a>
         <a href="#how" onclick="closeMenu()">Навчання</a>
+        <a href="/quiz/" data-quiz style="color:var(--cyan)">Пройти тест · 2 хв →</a>
         <a href="#form" onclick="closeMenu()" style="color:var(--orange)">Записатись на пробне →</a>
+    </div>
+
+    <!-- Банер тесту: QR на флаєрі веде сюди з ?utm_source=flaer, а дітям сказали пройти тест -->
+    <div class="quiz-bar" id="quizBar">
+        <a href="/quiz/" data-quiz>
+            <b>Тест: який IT-напрямок підходить дитині</b>
+            <span class="mono go">Пройти · 2 хв →</span>
+        </a>
     </div>
 
     <!-- HERO -->
@@ -1305,7 +1350,7 @@
                 </p>
                 <div class="hero-cta">
                     <a href="#form" class="btn">Записатись безкоштовно</a>
-                    <a href="#courses" class="btn ghost">Дивитись напрямки</a>
+                    <a href="/quiz/" class="btn ghost" data-quiz>Пройти тест · 2 хв</a>
                 </div>
             </div>
 
@@ -1715,6 +1760,15 @@
                 if (e.key === 'Escape') closeLightbox();
             });
         }
+
+        // Посилання на квіз забирають UTM з адреси лендінга.
+        // Інакше заявка з флаєра (?utm_source=flaer) прийде з квіза як «прямий захід».
+        (function () {
+            const q = location.search;
+            document.querySelectorAll('a[data-quiz]').forEach(a => { a.href = '/quiz/' + q; });
+            const src = new URLSearchParams(q).get('utm_source');
+            if (src === 'flaer') document.getElementById('quizBar').classList.add('show');
+        })();
 
         const MAKE_WEBHOOK = 'https://hook.eu2.make.com/477y2alcxf6dpjj4ltiwnri3yr3tmoi1';
         const FORM_TOKEN = 'ntr_2026_9f3a';
